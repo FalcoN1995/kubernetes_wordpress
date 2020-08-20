@@ -1,0 +1,14 @@
+---
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: hpa-cpu-wp
+spec:
+  # Target Reference
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: wp-deployment
+  maxReplicas: 6
+  minReplicas: 2
+  targetCPUUtilizationPercentage: 80
